@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(conda --version)",
+      "Bash(where python:*)",
+      "Bash(where conda:*)",
+      "Bash(where python3:*)",
+      "Bash(py --list)",
+      "Bash(cmd.exe:*)",
+      "Read(//c/Users/LENOVO/AppData/Local/Programs/**)",
+      "Read(//c/Users/LENOVO/miniconda3//**)",
+      "Read(//c/Users/LENOVO/**)",
+      "Bash(/c/Users/LENOVO/miniconda3/python.exe --version)",
+      "Bash(/c/Users/LENOVO/miniconda3/Scripts/conda.exe create:*)",
+      "Bash($CONDA_ENV/python.exe:*)",
+      "Bash(/c/Users/LENOVO/miniconda3/python.exe -c ':*)",
+      "Bash(/c/Users/LENOVO/miniconda3/envs/medagentgym/python.exe -m pip install 'openenv-core[core]>=0.2.2' fastapi uvicorn requests openai)",
+      "Bash(/c/Users/LENOVO/miniconda3/envs/medagentgym/python.exe -m pip install -r 'C:/Users/LENOVO/OneDrive/Desktop/build a GF/PROJECTS/openenv/MedAgentGym/requirements.txt')",
+      "Bash(/c/Users/LENOVO/miniconda3/envs/medagentgym/python.exe -c ':*)"
+    ]
+  }
+}
