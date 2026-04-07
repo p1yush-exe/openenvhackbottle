@@ -34,6 +34,15 @@ app = create_app(
 )
 
 
+@app.get("/")
+def root():
+    return {
+        "status": "ok",
+        "name": "medagent_env",
+        "endpoints": ["/health", "/reset", "/step", "/state", "/schema"],
+    }
+
+
 def run(host: str = "0.0.0.0", port: int = 8000):
     import uvicorn
     uvicorn.run(app, host=host, port=port)

@@ -74,10 +74,8 @@ ENV/
 env.bak/
 venv.bak/
 
-# Docker
-**/Dockerfile
-**/docker-compose.yml
-**/.dockerignore
+# Docker (tracked for hackathon submission)
+# **/Dockerfile and **/.dockerignore are intentionally NOT ignored
 
 # OS generated files
 .DS_Store
@@ -90,8 +88,8 @@ __MACOSX/
 # Egg info folders
 **/*.egg-info/
 
-# Ignore openenv generated files
-openenv.yaml
+# openenv.yaml is tracked for hackathon submission
+# openenv.yaml
 
 # Ignore logs
 *.log
