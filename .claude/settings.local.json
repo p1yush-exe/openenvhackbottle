@@ -1,22 +1,24 @@
 {
   "permissions": {
     "allow": [
-      "Bash(conda --version)",
-      "Bash(where python:*)",
-      "Bash(where conda:*)",
-      "Bash(where python3:*)",
-      "Bash(py --list)",
-      "Bash(cmd.exe:*)",
-      "Read(//c/Users/LENOVO/AppData/Local/Programs/**)",
-      "Read(//c/Users/LENOVO/miniconda3//**)",
-      "Read(//c/Users/LENOVO/**)",
-      "Bash(/c/Users/LENOVO/miniconda3/python.exe --version)",
-      "Bash(/c/Users/LENOVO/miniconda3/Scripts/conda.exe create:*)",
-      "Bash($CONDA_ENV/python.exe:*)",
-      "Bash(/c/Users/LENOVO/miniconda3/python.exe -c ':*)",
-      "Bash(/c/Users/LENOVO/miniconda3/envs/medagentgym/python.exe -m pip install 'openenv-core[core]>=0.2.2' fastapi uvicorn requests openai)",
-      "Bash(/c/Users/LENOVO/miniconda3/envs/medagentgym/python.exe -m pip install -r 'C:/Users/LENOVO/OneDrive/Desktop/build a GF/PROJECTS/openenv/MedAgentGym/requirements.txt')",
-      "Bash(/c/Users/LENOVO/miniconda3/envs/medagentgym/python.exe -c ':*)"
+      "Bash(python -c \"from openenv.core.env_server.http_server import create_app; print\\('create_app OK'\\)\")",
+      "Bash(python -c \"from openenv.core.env_server.interfaces import Environment; print\\('Environment OK'\\)\")",
+      "Bash(python -c \"from openenv.core.env_server.types import Action, Observation, State; print\\('Types OK'\\)\")",
+      "Bash(python -c ':*)",
+      "Bash(pip index:*)",
+      "Bash(pip install:*)",
+      "Bash(openenv validate:*)",
+      "Bash(DATA_PATH=./clinical_bench/data PYTHONPATH=. openenv validate .)",
+      "Bash(python -c \"import openenv; print\\(openenv.__file__\\)\")",
+      "Read(//c/Users/LENOVO/miniconda3/Lib/site-packages/openenv/**)",
+      "Bash(uv --version)",
+      "Bash(uv lock:*)",
+      "Bash(DATA_PATH=./clinical_bench/data PYTHONPATH=. uvicorn clinical_bench.server.app:app --host 0.0.0.0 --port 8080)",
+      "Bash(curl -s http://localhost:8080/health)",
+      "Bash(curl -s http://localhost:8080/metadata)",
+      "Bash(curl -s -X POST http://localhost:8080/reset -H \"Content-Type: application/json\" -d '{\"seed\":42,\"task_name\":\"clinical_calc\",\"task_index\":0}')",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('reset OK - task:', d.get\\('observation',{}\\).get\\('metadata',{}\\).get\\('task_name','?'\\)\\)\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d, indent=2\\)[:500]\\)\")"
     ]
   }
 }

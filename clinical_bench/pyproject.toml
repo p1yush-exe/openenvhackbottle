@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "clinical-bench"
+version = "1.0.0"
+description = "ClinicalBench: OpenEnv medical code-generation environment"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "openenv-core>=0.2.0",
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "pydantic>=2.9.0",
+    "websockets>=13.0",
+    "httpx>=0.27.0",
+    "openai>=1.50.0",
+    "scipy>=1.14.0",
+    "numpy>=1.26.0",
+    "scikit-image>=0.24.0",
+    "pandas>=2.2.0",
+    "scikit-learn>=1.5.0",
+]
+
+[project.scripts]
+clinical-bench-server = "clinical_bench.server.app:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["clinical_bench*"]
+
+[tool.setuptools.package-data]
+"clinical_bench.data" = ["**/*.jsonl", "**/*.csv"]

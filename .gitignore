@@ -1,105 +1,66 @@
-# Byte-compiled / optimized / DLL files
+# Virtual environments
+.venv/
+.venv312/
+venv/
+env/
+.env/
+
+# Python
 __pycache__/
 *.py[cod]
-*$py.class
-
-# C extensions
+*.pyo
+*.pyd
 *.so
-
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
 *.egg
+*.egg-info/
+dist/
+build/
+.eggs/
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+# Environment / secrets
+.env
+*.env
+credentials.toml
+*.toml.local
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Testing
 .pytest_cache/
+.coverage
+htmlcov/
 
-# Jupyter Notebook
-.ipynb_checkpoints
+# OS
+.DS_Store
+Thumbs.db
 
-# pyenv
-.python-version
-
-# pipenv
-Pipfile.lock
-
-# poetry
-poetry.lock
-
-# VS Code
+# IDEs
+.idea/
 .vscode/
+*.swp
+*.swo
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Logs / temp
+*.log
+workdir/
+tmp/
+
+# Results (keep structure but ignore specific result files)
+results/*.log
+!results/.gitkeep
+
+# Generated docs
+docs/*.png
+docs/*.pdf
+!docs/.gitkeep
 
 # mypy
 .mypy_cache/
 .dmypy.json
 dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pyright
-.pyright/
-
-# Local envs
-.env
-.venv/
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Docker (tracked for hackathon submission)
-# **/Dockerfile and **/.dockerignore are intentionally NOT ignored
-
-# OS generated files
-.DS_Store
-Thumbs.db
-ehthumbs.db
-Icon?
-Desktop.ini
-__MACOSX/
-
-# Egg info folders
-**/*.egg-info/
-
-# openenv.yaml is tracked for hackathon submission
-# openenv.yaml
-
-# Ignore logs
-*.log
-
-# Ignore compiled files
-*.pyo
-
-# Ignore server build outputs
-**/server/__pycache__/
-**/server/*.pyc
-
-# Ignore medagent_env build outputs
-medagent_env/openenv_medagent_env.egg-info/

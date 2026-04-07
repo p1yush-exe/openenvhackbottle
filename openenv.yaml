@@ -1,0 +1,114 @@
+name: clinical_bench
+version: "1.0.0"
+description: >
+  ClinicalBench is a medical code-generation environment where an AI agent
+  writes Python code to solve biomedical computation problems.
+  Three tasks span easy to hard: clinical calculators, biostatistical power
+  analysis, and bioinformatics function implementation.
+author: ClinicalBench Contributors
+tags:
+  - openenv
+  - medical
+  - bioinformatics
+  - code-generation
+  - clinical
+
+server:
+  module: clinical_bench.server.app
+  app: app
+  port: 8080
+
+action:
+  type: object
+  description: A Python code submission
+  properties:
+    code:
+      type: string
+      description: Python code to execute in the sandbox
+
+observation:
+  type: object
+  description: Environment observation returned after each step
+  properties:
+    task_description:
+      type: string
+      description: Full problem text the agent must solve
+    execution_result:
+      type: string
+      description: stdout captured from the last code execution
+    error:
+      type: string
+      nullable: true
+      description: Error message if execution failed
+    reward:
+      type: number
+      minimum: 0.0
+      maximum: 1.0
+      description: Reward for the last step
+    done:
+      type: boolean
+      description: True when the episode is over
+    step_number:
+      type: integer
+      description: Current step index (1-based)
+    max_steps:
+      type: integer
+      description: Maximum steps allowed per episode
+    metadata:
+      type: object
+      description: Extra episode metadata (task_name, difficulty, episode_id, etc.)
+
+state:
+  type: object
+  description: Episode-level state
+  properties:
+    episode_id:
+      type: string
+    task_name:
+      type: string
+      enum: [clinical_calc, biostat_power, biocoder]
+    task_index:
+      type: integer
+    step_count:
+      type: integer
+    total_reward:
+      type: number
+    done:
+      type: boolean
+
+tasks:
+  - name: clinical_calc
+    difficulty: easy
+    description: >
+      Clinical calculator problems derived from patient notes.
+      The agent extracts relevant values and computes a medical metric
+      (e.g., Creatinine Clearance, BMI, GFR).
+    grader: partial_numeric
+    reward_range: [0.0, 1.0]
+    num_test_problems: 1046
+
+  - name: biostat_power
+    difficulty: medium
+    description: >
+      Biostatistical power analysis problems.
+      The agent determines required sample size or statistical power
+      given a study design description.
+    grader: partial_numeric
+    reward_range: [0.0, 1.0]
+    num_test_problems: 343
+
+  - name: biocoder
+    difficulty: hard
+    description: >
+      Bioinformatics function implementation.
+      The agent writes a Python function body given a spec, signature,
+      and surrounding context code.  Graded by comparing stdout to
+      the reference implementation's output.
+    grader: output_match
+    reward_range: [0.0, 1.0]
+    num_test_problems: 156
+
+episode:
+  max_steps: 8
+  reward_range: [0.0, 1.0]
+  partial_progress: true
